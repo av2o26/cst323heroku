@@ -40,7 +40,7 @@ public class OrdersDataService implements DataAccessInterface<OrderModel>
 	 */
 	public List<OrderModel> findAll()
 	{
-		log.info("OrdersDataService getting all orders.");
+		log.info("findAll() - Entering method. Querying database for all orders.");
 		String sql = "SELELT * FROM ORDERS";
 		List<OrderModel> orders = new ArrayList<OrderModel>();
 		try
@@ -61,6 +61,8 @@ public class OrdersDataService implements DataAccessInterface<OrderModel>
 			log.error("Error occured while gettings orders", e);
 		}
 		
+		log.info("finalAll() - Exiting method. Got orders from database.");
+		
 		return orders;
 	}
 	
@@ -76,7 +78,7 @@ public class OrdersDataService implements DataAccessInterface<OrderModel>
 	 */
 	public boolean create(OrderModel order)
 	{
-		log.info("Creating an order");
+		log.info("create() - Entering method. Creating an order");
 		// Example of "overriding the CrudRepository save() because it simply is never called
 		// You can inject a dataSource and use the jdbcTemplate to provide a customized implementation of a save() method
 		String sql = "INSERT INTO ORDERS(ORDER_NO, PRODUCT_NAME, PRICE, QUANTITY) VALUES(?, ?, ?, ?)";
@@ -95,6 +97,8 @@ public class OrdersDataService implements DataAccessInterface<OrderModel>
 			log.error("Error occured while creating order", e);
 			return false;
 		}
+		
+		log.info("create() - Order created. Exiting method.");
 		
 		return true;
 	}

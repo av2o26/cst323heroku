@@ -10,7 +10,7 @@ public class SecurityBusinessService
 {
 	public boolean authenticate(String username, String password)
 	{
-		log.info("Hello from the SecurityBusinessService.");
+		log.info("authenticate() - Entering and exiting.");
 		return true;
 	}
 }

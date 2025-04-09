@@ -34,30 +34,30 @@ public class LoginController
 	@GetMapping("/")
 	public String display(Model model)
 	{
-		logger.trace("----In display()");
-		logger.debug("Hi debug");
-		logger.info("Wow");
+		logger.info("display() - Entering method. Getting page attributes.");
 		
 		// Display Login Page
 		model.addAttribute("title", "Login Form");
 		model.addAttribute("loginModel", new LoginModel());
+		
+		logger.info("display() - Page is now loaded. Exiting method.");
+		
 		return "login";
 	}
 	
 	@PostMapping("/doLogin")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model)
 	{
-		logger.trace("----In doLogin()");
+		logger.info("doLogin() - Entering method. Attempting to log user in.");
 		
 		//Check for Validation Errors
 		if (bindingResult.hasErrors())
 		{
+			logger.info("doLogin() - Incorrect information entered. Restarting method.");
+			
 			model.addAttribute("title", "Login Form");
 			return "login";
 		}
-		
-		// Print the form values out
-		System.out.println(String.format("Form with Username of %s and Password of %s", loginModel.getUsername(), loginModel.getPassword()));
 		
 		// Interface test
 		service.test();
@@ -67,6 +67,8 @@ public class LoginController
 		
 		model.addAttribute("title", "My Orders");
 		model.addAttribute("orders", orders);
+		
+		logger.info("doLogin() - User got logged in. Exiting method.");
 		
 		// Go to Login Page
 		return "orders";

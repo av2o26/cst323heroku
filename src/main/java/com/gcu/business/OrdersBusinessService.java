@@ -20,13 +20,13 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface
 	@Override
 	public void test() 
 	{
-		log.info("Hello from the OrdersBusinessService.");
+		log.info("test() - Entering and exiting.");
 	}
 
 	@Override
 	public List<OrderModel> getOrders() 
 	{
-		log.info("OrdersBusinessService requesting to get orders.");
+		log.info("getOrders() - Entering method. Requesting to get orders.");
 		
 		var ordersDomain = new ArrayList<OrderModel>();
 		
@@ -37,6 +37,8 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface
 			ordersDomain.add(new OrderModel(entity.getId(), entity.getOrderNo(), entity.getProductName(), entity.getPrice(), entity.getQuantity()));
 		}
 		
+		log.info("getOrders() - Acquired orders. Exiting method");
+		
 		// Return list of orders
 		return ordersDomain;
 	}
@@ -44,13 +46,13 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface
 	@Override
 	public void init()
 	{
-		log.info("This is init from the OrdersBusinessService.");
+		log.info("init() - Entering and exiting.");
 	}
 
 	@Override
 	public void destroy()
 	{
-		log.info("This is destroy from the OrdersBusinessService.");
+		log.info("destroy() - Entering and exiting.");
 	}
 	
 }
