@@ -50,7 +50,6 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface
 	@Override
 	public void destroy()
 	{
-		log.trace("----In destroy()");
 		log.info("This is destroy from the OrdersBusinessService.");
 	}
 	
