@@ -11,7 +11,7 @@ public class CloudApp {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CloudApp.class, args);
-		log.info("Springboot logging has started.");
+		log.info("Springboot logging has begun.");
 	}
 
 }
